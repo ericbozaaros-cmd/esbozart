@@ -31,6 +31,8 @@ h3 {
   font-size: 1.5rem;
   color: #08332B
 } 
+
+
 /* HEADER */
 .site-header {
   display: flex;
@@ -496,3 +498,24 @@ h3 {
   .creditos{ order:3; }
 
 
+@media (max-width: 820px) {
+  .about-grid, .testi-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-left {
+    grid-template-columns: 1fr; /* foto arriba, texto abajo */
+  }
+  .about-right, .testi-left, .testi-right {
+    height: auto; /* elimina altura fija de 450px */
+  }
+}
+
+.hero {
+  min-height: 60vh; /* ocupa 60% del alto de pantalla */
+}
+.banner-hero {
+  height: 100%;
+}
+@media (max-width: 520px) {
+  .hero h1 { font-size: 1.2rem; }
+}

@@ -1,6 +1,8 @@
 @use 'variables' as v;
 
-/* ==================== RESETS BÁSICOS ==================== */
+/* =========================================================
+   BASE • Resets mínimos y utilidades seguras
+   =======================================================*/
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -8,59 +10,54 @@
 html, body {
   margin: 0;
   max-width: 100%;
-  overflow-x: clip;     /* evita scroll horizontal */
+  overflow-x: clip;             /* evita barra horizontal */
 }
 
 img, video { display: block; max-width: 100%; height: auto; }
 
-/* Gutters laterales los dan los contenedores, no el body en mobile */
+/* En mobile los “gutters” laterales los da cada .container */
 @media (max-width: 575.98px){
   body { padding: 0 !important; }
 }
 
-/* ==================== HERO ==================== */
+/* =========================================================
+   HERO
+   (mobile queda igual; en desktop altura cómoda)
+   =======================================================*/
 .hero{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 400px;                 /* desktop */
   color: #fff;
   width: 100%;
+  height: 400px;                /* desktop por defecto */
 }
-
 @media (max-width: 575.98px){
-  .hero{
-    height: 263px;               /* mobile */
-    margin-inline: 0;            /* sin “sangrados” extra: ocupa 100% */
-  }
+  .hero{ height: 263px; }
 }
 
 .banner-hero{
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: -2;
+  object-fit: cover; z-index: -2;
   filter: brightness(80%);
 }
-
 .hero::after{
   content:""; position:absolute; inset:0;
   background: linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.45));
   z-index:-1;
 }
-
 .hero-content{
   padding-inline: clamp(16px, 6.6vw, 100px);
   width: 100%;
-  text-align: left;
 }
 .hero-content h1{
+  margin: 0 0 1rem 0;
   font-weight: 500;
-  font-size: clamp(1.2rem, 2.2vw, 2.5rem); /* máx ≈ 40px */
+  font-size: clamp(1.2rem, 2.2vw, 2.5rem);
   line-height: 1.25;
   text-shadow: 0 6px 18px rgba(0,0,0,.35);
-  margin: 0 0 1rem 0;
 }
 @media (max-width: 575.98px){
   .hero-content{ text-align: center; padding-inline: 16px; }
@@ -69,17 +66,19 @@ img, video { display: block; max-width: 100%; height: auto; }
   .hero .btn{ border-radius: 0; } /* recto solo desktop */
 }
 
-/* ==================== INTRO ==================== */
+/* =========================================================
+   INTRO
+   =======================================================*/
 .intro{
   padding-block: clamp(2rem, 6vw, 3.5rem);
   text-align: center;
 }
-.intro .container{ max-width: 900px; margin-inline: auto; }
-.intro .container{ padding-inline: clamp(16px, 6.6vw, 100px); }
+.intro .container{ max-width: 900px; margin-inline: auto; padding-inline: clamp(16px, 6.6vw, 100px); }
 .intro h2{
-  font-weight: 300; color:#08332B;
-  font-size: clamp(1.25rem, 2.2vw, 2rem);
   margin: 0 0 .75rem 0;
+  font-weight: 300;
+  color:#08332B;
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
 }
 .intro .lead{
   max-width: 560px; margin: 0 auto 1rem;
@@ -87,36 +86,49 @@ img, video { display: block; max-width: 100%; height: auto; }
 }
 .intro .btn{ margin-inline: auto; background: rgba(188,200,198,.35); }
 
-/* ==================== CATEGORÍAS ==================== */
+/* =========================================================
+   CATEGORÍAS
+   =======================================================*/
 .categorias-obra{
-    padding-top: clamp(0rem, 0vw, 0rem);     /* 🔹 menos espacio arriba */
-  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* mantiene aire abajo */
+  padding-top: 0;                               /* pegada arriba */
+  padding-bottom: clamp(2rem, 6vw, 3.5rem);
   text-align: center;
 }
 .categorias-obra .container{
+  max-width: 1400px; margin-inline: auto;
   padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto; max-width: 1400px;
 }
 .grid-3{
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2.5vw, 2rem); align-items: start;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
 }
 @media (max-width: 575.98px){ .grid-3{ grid-template-columns: 1fr; gap: 2rem; } }
 
 .cat{ display: grid; justify-items: center; }
-.cat h3{ font-weight:300; color:#08332B; font-size:clamp(1rem,1.8vw,1.35rem); margin:0 0 .65rem 0; }
-.cat .frame, .cat .mat{ padding:0; background:transparent; border:0; }
-.cat .frame{ width: clamp(240px, 28vw, 360px); margin-inline:auto; }
-.cat img{ display:block; width:100%; height:auto; }
+.cat h3{
+  margin: 0 0 .65rem 0;
+  font-weight: 300; color:#08332B;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+}
+.cat .frame, .cat .mat{ padding: 0; background: transparent; border: 0; }
+.cat .frame{ width: clamp(240px, 28vw, 360px); margin-inline: auto; }
+.cat img{ width: 100%; height: auto; }
 .cat figcaption{ margin-top:.6rem; color:#08332B; line-height:1.4; opacity:.9; }
 .cat figcaption small{ display:block; margin-top:.2rem; opacity:.75; }
 
-/* ==================== ABOUT ==================== */
-.about{ padding-top: clamp(0rem, 0vw, 0rem);     /* 🔹 menos espacio arriba */
-  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* mantiene aire abajo */ }
+/* =========================================================
+   ABOUT
+   (mobile queda como lo tenías; desktop: bordes rectos)
+   =======================================================*/
+.about{
+  padding-top: 0;
+  padding-bottom: clamp(2rem, 6vw, 3.5rem);     /* aire normal (se ajusta en desktop) */
+}
 .about .container{
+  max-width: 1400px; margin-inline: auto;
   padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto; max-width: 1400px;
 }
 .about-grid{
   display: grid; grid-template-columns: 1fr 1fr;
@@ -126,122 +138,117 @@ img, video { display: block; max-width: 100%; height: auto; }
   display: grid; grid-template-columns: 140px 1fr;
   gap: clamp(.75rem, 2vw, 1.25rem); align-items: center;
 }
-.portrait{ margin:0; text-align:center; }
-.portrait img{ display:block; width:100%; height:auto; object-fit:cover; border-radius:4px; }
-.portrait figcaption{ margin-top:.5rem; font-size:.95rem; opacity:.85; }
-.about-text h2{ font-weight:300; color:v.$color-text; font-size:clamp(1.25rem,2.2vw,1.8rem); margin:0 0 .5rem 0; }
-.about-text p{ line-height:1.55; opacity:.9; margin:0 0 .75rem 0; }
-.btn--light{ background: rgba(188,200,198,.35); }
+.portrait{ margin: 0; text-align: center; }
+.portrait img{ width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
+.portrait figcaption{ margin-top: .5rem; font-size: .95rem; opacity: .85; }
 
-/* panel verde (mobile/tablet redondeado) */
-.about-right {
+.about-text h2{
+  margin: 0 0 .5rem 0;
+  font-weight: 300;
+  color: v.$color-text;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+}
+.about-text p{ line-height: 1.55; opacity: .9; margin: 0 0 .75rem 0; }
+
+.about-right{
   background: v.$color-navbar;
   color: #fff;
   padding: clamp(1.5rem, 4vw, 2rem);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;      /* 🔹 título arriba, lista debajo */
-  justify-content: center;     /* 🔹 centrado vertical */
-  align-items: flex-start;     /* 🔹 alinea el texto a la izquierda */
-  text-align: left;            /* 🔹 mantiene alineación del texto */
-  gap: 1rem;                   /* 🔹 espacio entre título y lista */
+  border-radius: 10px;                 /* redondeado en mobile/tablet */
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  text-align: left; gap: 1rem;
 }
+.about-right h2{ margin: 0; font-weight: 300; font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.about-right ul{ margin: 0; padding-left: 1.25rem; line-height: 1.6; opacity: .95; list-style: disc; }
 
-.about-right h2 {
-  font-weight: 300;
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
-  margin: 0;
-}
-
-.about-right ul {
-  margin: 0;
-  padding-left: 1.25rem;
-  line-height: 1.6;
-  opacity: 0.95;
-  list-style-type: disc;       /* 🔹 puntos normales */
-}
 @media (max-width: 991.98px){
   .about-grid{ grid-template-columns: 1fr; }
-  .about-left{ grid-template-columns: 1fr; justify-items:center; text-align:center; }
-  .about-text p{ text-align:center; }
+  .about-left{ grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .about-text p{ text-align: center; }
 }
 
-/* ====== Desktop: alturas y bordes rectos ====== */
-@media (min-width: 992px){
-  .about{ padding-bottom: 0; }     /* se pega a TESTI */
-  .about-left{ min-height: 350px; display:grid; align-content:center; }
-  .about-right{ min-height: 350px; border-radius: 0; display:flex; align-items:center; }
-}
-
-/* ==================== TESTIMONIO ==================== */
-.testi{  padding-block: 0;}
+/* =========================================================
+   TESTIMONIO
+   (mobile queda igual; desktop pegado a about y sin padding abajo)
+   =======================================================*/
+.testi{ padding-block: 0; }                      /* por defecto sin aire extra */
 .testi .container{
+  max-width: 1400px; margin-inline: auto;
   padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto; max-width: 1400px;
 }
 .testi-grid{
   display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(1.25rem, 3vw, 2rem); align-items: stretch;
 }
 
-/* panel verde izquierda */
 .testi-left{
-  background: v.$color-navbar; color:#fff;
+  background: v.$color-navbar; color: #fff;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 10px;   /* mobile/tablet */
+  border-radius: 10px;                         /* redondeado mobile/tablet */
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
 }
-#testi-title{ font-weight:300; font-size:clamp(1.2rem,2vw,1.6rem); margin:0 0 1rem 0; }
-.testi-quote p{ margin:0 auto .75rem; max-width:600px; line-height:1.6; opacity:.95; font-style:italic; }
-.testi-author{ margin-top:.75rem; font-weight:600; }
+#testi-title{ margin: 0 0 1rem 0; font-weight: 300; font-size: clamp(1.2rem, 2vw, 1.6rem); }
+.testi-quote p{ margin: 0 auto .75rem; max-width: 600px; line-height: 1.6; opacity: .95; font-style: italic; }
+.testi-author{ margin-top: .75rem; font-weight: 600; }
 
-/* imagen derecha */
-.testi-right{ margin:0; }
+.testi-right{ margin: 0; }
 @media (max-width: 991.98px){
   .testi-grid{ grid-template-columns: 1fr; }
   .testi-left{ order: 2; }
   .testi-right{ order: 1; }
-  .testi-right img{ display:block; width:100%; height:auto; object-fit:contain; border-radius:10px; }
+  .testi-right img{ width: 100%; height: auto; object-fit: contain; border-radius: 10px; }
 }
 
+/* ---------- Desktop: “pegado” a ABOUT + sin padding inferior ---------- */
 @media (min-width: 992px){
-  .testi{ padding-top: 0; padding-bottom: 0;}                /* se pega a ABOUT */
-  .testi-left{ min-height: 350px; border-radius: 0; }
-  .testi-right{ min-height: 350px; display:grid; place-items:center; }
+  /* 1) Menos aire entre ABOUT y TESTI */
+  .about{
+    padding-bottom: 1rem;         /* ↓ antes más grande; ahora muy corto */
+  }
+  .testi{
+    padding-top: 1rem;            /* pequeño respiro entre bloques */
+    padding-bottom: 0;            /* ❗ nada de espacio abajo, como pediste */
+  }
+
+  /* 2) Igualo alturas y quito redondeos */
+  .about-left{  min-height: 350px; display: grid; align-content: center; }
+  .about-right{ min-height: 350px; border-radius: 0; display: flex; align-items: center; }
+
+  .testi-left{  min-height: 350px; border-radius: 0; }
+  .testi-right{ min-height: 350px; display: grid; place-items: center; }
   .testi-right img{
     max-height: 275px; max-width: 60%;
     width: auto; height: auto; object-fit: contain; border-radius: 0;
   }
 }
 
-/* ==================== CTA FINAL ==================== */
-.cta{ padding-block: clamp(2rem, 6vw, 3.5rem);
-  ; text-align: center; }
+/* =========================================================
+   CTA FINAL
+   =======================================================*/
+.cta{
+  padding-block: clamp(4rem, 8vw, 4rem);
+  text-align: center;
+}
 .cta-wrap{
   max-width: 900px; margin-inline: auto;
   padding-inline: clamp(16px, 6.6vw, 100px);
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
 }
-.cta h2{ color:#08332B; font-weight:300; font-size:clamp(1.25rem,2vw,1.8rem); margin:0; }
-/* === BOTÓN CTA FINAL === */
-.cta .btn {
-  margin-inline: auto;
-  background: rgba(188,200,198,.35);
-  padding: .65rem 1.5rem;
-  border-radius: 0; /* 🔹 recto por defecto (desktop) */
+.cta h2{ margin: 0; color:#08332B; font-weight: 300; font-size: clamp(1.25rem, 2vw, 1.8rem); }
+.cta .btn{
+  margin-inline: auto; background: rgba(188,200,198,.35);
+  padding: .65rem 1.5rem; border-radius: 0;     /* recto desktop */
+}
+@media (max-width: 575.98px){
+  .cta .btn{ width: 100%; border-radius: 12px; } /* redondeado solo mobile */
 }
 
-/* solo redondeado en mobile */
-@media (max-width: 575.98px) {
-  .cta .btn {
-    width: 100%;
-    border-radius: 12px; /* 🔹 redondeado solo mobile */
-  }
-}
-/* ==================== FOOTER ==================== */
-/* full-bleed seguro (sin 100vw) */
+/* =========================================================
+   FOOTER (full-bleed seguro, como en index)
+   =======================================================*/
 .site-footer{
   background:#08332B; color:#fff;
   margin-inline: calc(50% - 50vw);
@@ -251,24 +258,16 @@ img, video { display: block; max-width: 100%; height: auto; }
   padding-inline: clamp(16px, 6.6vw, 100px);
   max-width: 1400px; margin-inline: auto;
 }
-
 .footer-top{
   display:flex; justify-content:space-between; align-items:center;
   flex-wrap:wrap; gap:1rem; margin-bottom:1rem;
 }
 .brand{ font-weight:700; font-size:1.1rem; letter-spacing:.03em; }
-
-.footer-nav ul{
-  list-style:none; display:flex; flex-wrap:wrap; gap:1.5rem; margin:0; padding:0;
-}
+.footer-nav ul{ list-style:none; display:flex; flex-wrap:wrap; gap:1.5rem; margin:0; padding:0; }
 .footer-nav a{ color:#fff; text-decoration:none; font-weight:600; font-size:.9rem; }
 .footer-nav a:hover{ text-decoration:underline; }
-
 .footer-rule{ border:none; border-top:1px solid rgba(255,255,255,.2); margin:1.5rem 0; }
-
-.footer-bottom{
-  display:grid; grid-template-columns: 1fr auto auto; align-items:start; gap:1.5rem;
-}
+.footer-bottom{ display:grid; grid-template-columns: 1fr auto auto; align-items:start; gap:1.5rem; }
 .contacto{ font-style:normal; color:#fff; opacity:.9; }
 .contacto a{ color:#fff; text-decoration:none; }
 .contacto a:hover{ text-decoration:underline; }
@@ -276,7 +275,6 @@ img, video { display: block; max-width: 100%; height: auto; }
 .social{ list-style:none; display:flex; gap:1rem; margin:0; padding:0; }
 .social a{ color:#fff; text-decoration:none; font-size:1rem; }
 .social a:hover{ opacity:.8; }
-
 @media (max-width:991.98px){
   .footer-top{ flex-direction:column; align-items:center; text-align:center; }
   .footer-nav ul{ justify-content:center; gap:.75rem; }
@@ -285,8 +283,9 @@ img, video { display: block; max-width: 100%; height: auto; }
   .creditos{ order:3; }
 }
 
-/* ==================== NAVBAR saneado ==================== */
-/* Por si queda alguna regla vieja que extienda el navbar fuera de la página */
+/* =========================================================
+   NAVBAR (saneada para no desbordar)
+   =======================================================*/
 .navbar{
   margin-inline: 0 !important;
   width: auto !important;
@@ -298,4 +297,3 @@ img, video { display: block; max-width: 100%; height: auto; }
   padding-inline: clamp(16px, 6.6vw, 100px) !important;
   max-width: 100%;
 }
-

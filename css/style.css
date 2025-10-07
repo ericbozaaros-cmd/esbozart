@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Reset mínimo */
+/* ===== Reset mínimo ===== */
 * {
   margin: 0;
   padding: 0;
@@ -11,81 +11,89 @@ img {
   display: block;
 }
 
-/* por defecto (desktop / tablet): SIN padding lateral en el body */
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  color: #08332B;
+  color: #08332B; /* #08332B */
   background: #f7faf9;
   padding-inline: 0;
 }
 
-/* mobile: 16px laterales para TODO el body */
+/* móvil: gutters laterales globales */
 @media (max-width: 575.98px) {
   body {
     padding-inline: 16px;
   }
 }
-/* Navbar: fondo verde + texto blanco + activo más negrito */
+/* ================= NAVBAR =================
+   Fondo = mismo tono translúcido de tus botones
+   Texto (links + brand) = mismo color que usa el texto del botón
+   Sin subrayados, sin mayúsculas forzadas, peso normal/activo sutil
+=========================================== */
 .navbar {
-  background-color: #43605B !important;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  width: calc(100% + 2rem);
-}
-
-/* El fondo sigue a ancho completo por los márgenes negativos que ya tienes */
-.navbar {
-  /* opcional: asegúrate de que el propio navbar no agregue padding */
+  background-color: rgba(188, 200, 198, 0.35) !important; /* como los botones */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* no “trucamos” ancho; que sea natural */
   --bs-navbar-padding-x: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
-/* Contenido interno: controlamos el padding real aquí */
 .navbar .container-fluid {
-  /* 1) anula el gutter por defecto de Bootstrap */
-  --bs-gutter-x: 0;
-  /* 2) fija el padding deseado (≈100px a 1512px), con !important por si quedó alguna utilidad suelta */
-  padding-left: clamp(16px, 6.6vw, 100px) !important;
-  padding-right: clamp(16px, 6.6vw, 100px) !important;
+  /* gutter relativo ~100px en 1512px y mínimo 16px */
+  padding-inline: clamp(16px, 6.6vw, 100px);
 }
 
-.navbar .navbar-brand,
-.navbar .nav-link {
-  color: #fff !important;
+/* Marca / logo */
+.navbar .navbar-brand {
+  color: #08332B !important; /* igual al texto de tus botones */
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
 }
 
+/* Enlaces */
 .navbar .nav-link {
-  font-weight: 500;
+  color: #08332B !important; /* igual al texto del botón */
+  font-weight: 500; /* NO aumentamos tamaño ni transform */
+  text-decoration: none;
+}
+
+/* Hover / activo: sutil, sin subrayado */
+.navbar .nav-link:hover {
+  color: rgb(6.4, 40.8, 34.4) !important; /* un poco más oscuro */
+  text-decoration: none;
 }
 
 .navbar .nav-link.active,
 .navbar .nav-link[aria-current=page] {
-  font-weight: 700 !important;
+  font-weight: 600; /* leve énfasis */
+  text-decoration: none;
 }
 
+/* Toggler (hamburguesa) en verde oscuro para que combine */
 .navbar .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.4);
+  border: 0;
 }
 
 .navbar .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  /* icono en el mismo color del texto */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2308332B' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Botones: mobile redondeado / desktop recto */
+/* ================= BOTONES =================
+   (para referencia; no cambia nada que ya te guste)
+=========================================== */
 .btn {
   display: inline-block;
   padding: 12px 28px;
   background: rgba(188, 200, 198, 0.5);
   color: #08332B;
   text-decoration: none;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 700;
   font-size: 0.6rem;
   border: 0;
-  border-radius: 999px; /* MOBILE por defecto: redondeado */
+  border-radius: 999px; /* mobile por defecto */
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -100,17 +108,17 @@ body {
     border-radius: 0;
   }
 }
-/* === MOBILE (≤575px) === */
+/* Mobile: ancho completo + redondeo suave */
 @media (max-width: 575.98px) {
   .btn {
-    display: block; /* ocupa toda la línea */
-    width: 100%; /* ancho completo */
-    border-radius: 15px; /* ← redondeo suave, no píldora */
+    display: block;
+    width: 100%;
+    border-radius: 15px;
     text-align: center;
-    padding: 14px 0; /* más equilibrado visualmente */
+    padding: 14px 0;
   }
 }
-/* === ACCESIBILIDAD: oculta visualmente el texto pero accesible para lectores de pantalla === */
+/* A11y: texto solo para lectores de pantalla */
 .sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -123,7 +131,9 @@ body {
   border: 0 !important;
 }
 
-/* ==================== RESETS BÁSICOS ==================== */
+/* =========================================================
+   BASE • Resets mínimos y utilidades seguras
+   =======================================================*/
 *,
 *::before,
 *::after {
@@ -133,7 +143,7 @@ body {
 html, body {
   margin: 0;
   max-width: 100%;
-  overflow-x: clip; /* evita scroll horizontal */
+  overflow-x: clip; /* evita barra horizontal */
 }
 
 img, video {
@@ -142,27 +152,29 @@ img, video {
   height: auto;
 }
 
-/* Gutters laterales los dan los contenedores, no el body en mobile */
+/* En mobile los “gutters” laterales los da cada .container */
 @media (max-width: 575.98px) {
   body {
     padding: 0 !important;
   }
 }
-/* ==================== HERO ==================== */
+/* =========================================================
+   HERO
+   (mobile queda igual; en desktop altura cómoda)
+   =======================================================*/
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 400px; /* desktop */
   color: #fff;
   width: 100%;
+  height: 400px; /* desktop por defecto */
 }
 
 @media (max-width: 575.98px) {
   .hero {
-    height: 263px; /* mobile */
-    margin-inline: 0; /* sin “sangrados” extra: ocupa 100% */
+    height: 263px;
   }
 }
 .banner-hero {
@@ -186,15 +198,14 @@ img, video {
 .hero-content {
   padding-inline: clamp(16px, 6.6vw, 100px);
   width: 100%;
-  text-align: left;
 }
 
 .hero-content h1 {
+  margin: 0 0 1rem 0;
   font-weight: 500;
-  font-size: clamp(1.2rem, 2.2vw, 2.5rem); /* máx ≈ 40px */
+  font-size: clamp(1.2rem, 2.2vw, 2.5rem);
   line-height: 1.25;
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  margin: 0 0 1rem 0;
 }
 
 @media (max-width: 575.98px) {
@@ -208,7 +219,9 @@ img, video {
     border-radius: 0;
   } /* recto solo desktop */
 }
-/* ==================== INTRO ==================== */
+/* =========================================================
+   INTRO
+   =======================================================*/
 .intro {
   padding-block: clamp(2rem, 6vw, 3.5rem);
   text-align: center;
@@ -217,17 +230,14 @@ img, video {
 .intro .container {
   max-width: 900px;
   margin-inline: auto;
-}
-
-.intro .container {
   padding-inline: clamp(16px, 6.6vw, 100px);
 }
 
 .intro h2 {
+  margin: 0 0 0.75rem 0;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1.25rem, 2.2vw, 2rem);
-  margin: 0 0 0.75rem 0;
 }
 
 .intro .lead {
@@ -243,17 +253,19 @@ img, video {
   background: rgba(188, 200, 198, 0.35);
 }
 
-/* ==================== CATEGORÍAS ==================== */
+/* =========================================================
+   CATEGORÍAS
+   =======================================================*/
 .categorias-obra {
-  padding-top: clamp(0rem, 0vw, 0rem); /* 🔹 menos espacio arriba */
-  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* mantiene aire abajo */
+  padding-top: 0; /* pegada arriba */
+  padding-bottom: clamp(2rem, 6vw, 3.5rem);
   text-align: center;
 }
 
 .categorias-obra .container {
-  padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto;
   max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
 }
 
 .grid-3 {
@@ -275,10 +287,10 @@ img, video {
 }
 
 .cat h3 {
+  margin: 0 0 0.65rem 0;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1rem, 1.8vw, 1.35rem);
-  margin: 0 0 0.65rem 0;
 }
 
 .cat .frame, .cat .mat {
@@ -293,7 +305,6 @@ img, video {
 }
 
 .cat img {
-  display: block;
   width: 100%;
   height: auto;
 }
@@ -311,16 +322,19 @@ img, video {
   opacity: 0.75;
 }
 
-/* ==================== ABOUT ==================== */
+/* =========================================================
+   ABOUT
+   (mobile queda como lo tenías; desktop: bordes rectos)
+   =======================================================*/
 .about {
-  padding-top: clamp(0rem, 0vw, 0rem); /* 🔹 menos espacio arriba */
-  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* mantiene aire abajo */
+  padding-top: 0;
+  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* aire normal (se ajusta en desktop) */
 }
 
 .about .container {
-  padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto;
   max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
 }
 
 .about-grid {
@@ -343,7 +357,6 @@ img, video {
 }
 
 .portrait img {
-  display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -357,10 +370,10 @@ img, video {
 }
 
 .about-text h2 {
+  margin: 0 0 0.5rem 0;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1.25rem, 2.2vw, 1.8rem);
-  margin: 0 0 0.5rem 0;
 }
 
 .about-text p {
@@ -369,28 +382,23 @@ img, video {
   margin: 0 0 0.75rem 0;
 }
 
-.btn--light {
-  background: rgba(188, 200, 198, 0.35);
-}
-
-/* panel verde (mobile/tablet redondeado) */
 .about-right {
   background: #43605B;
   color: #fff;
   padding: clamp(1.5rem, 4vw, 2rem);
-  border-radius: 10px;
+  border-radius: 10px; /* redondeado en mobile/tablet */
   display: flex;
-  flex-direction: column; /* 🔹 título arriba, lista debajo */
-  justify-content: center; /* 🔹 centrado vertical */
-  align-items: flex-start; /* 🔹 alinea el texto a la izquierda */
-  text-align: left; /* 🔹 mantiene alineación del texto */
-  gap: 1rem; /* 🔹 espacio entre título y lista */
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1rem;
 }
 
 .about-right h2 {
+  margin: 0;
   font-weight: 300;
   font-size: clamp(1.25rem, 2vw, 1.6rem);
-  margin: 0;
 }
 
 .about-right ul {
@@ -398,7 +406,7 @@ img, video {
   padding-left: 1.25rem;
   line-height: 1.6;
   opacity: 0.95;
-  list-style-type: disc; /* 🔹 puntos normales */
+  list-style: disc;
 }
 
 @media (max-width: 991.98px) {
@@ -414,32 +422,17 @@ img, video {
     text-align: center;
   }
 }
-/* ====== Desktop: alturas y bordes rectos ====== */
-@media (min-width: 992px) {
-  .about {
-    padding-bottom: 0;
-  } /* se pega a TESTI */
-  .about-left {
-    min-height: 350px;
-    display: grid;
-    align-content: center;
-  }
-  .about-right {
-    min-height: 350px;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-  }
-}
-/* ==================== TESTIMONIO ==================== */
+/* =========================================================
+   TESTIMONIO
+   (mobile queda igual; desktop pegado a about y sin padding abajo)
+   =======================================================*/
 .testi {
   padding-block: 0;
-}
-
+} /* por defecto sin aire extra */
 .testi .container {
-  padding-inline: clamp(16px, 6.6vw, 100px);
-  margin-inline: auto;
   max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
 }
 
 .testi-grid {
@@ -449,12 +442,11 @@ img, video {
   align-items: stretch;
 }
 
-/* panel verde izquierda */
 .testi-left {
   background: #43605B;
   color: #fff;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 10px; /* mobile/tablet */
+  border-radius: 10px; /* redondeado mobile/tablet */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -463,9 +455,9 @@ img, video {
 }
 
 #testi-title {
+  margin: 0 0 1rem 0;
   font-weight: 300;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
-  margin: 0 0 1rem 0;
 }
 
 .testi-quote p {
@@ -481,7 +473,6 @@ img, video {
   font-weight: 600;
 }
 
-/* imagen derecha */
 .testi-right {
   margin: 0;
 }
@@ -497,18 +488,34 @@ img, video {
     order: 1;
   }
   .testi-right img {
-    display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
     border-radius: 10px;
   }
 }
+/* ---------- Desktop: “pegado” a ABOUT + sin padding inferior ---------- */
 @media (min-width: 992px) {
+  /* 1) Menos aire entre ABOUT y TESTI */
+  .about {
+    padding-bottom: 1rem; /* ↓ antes más grande; ahora muy corto */
+  }
   .testi {
-    padding-top: 0;
-    padding-bottom: 0;
-  } /* se pega a ABOUT */
+    padding-top: 1rem; /* pequeño respiro entre bloques */
+    padding-bottom: 0; /* ❗ nada de espacio abajo, como pediste */
+  }
+  /* 2) Igualo alturas y quito redondeos */
+  .about-left {
+    min-height: 350px;
+    display: grid;
+    align-content: center;
+  }
+  .about-right {
+    min-height: 350px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+  }
   .testi-left {
     min-height: 350px;
     border-radius: 0;
@@ -527,9 +534,11 @@ img, video {
     border-radius: 0;
   }
 }
-/* ==================== CTA FINAL ==================== */
+/* =========================================================
+   CTA FINAL
+   =======================================================*/
 .cta {
-  padding-block: clamp(2rem, 6vw, 3.5rem);
+  padding-block: clamp(4rem, 8vw, 4rem);
   text-align: center;
 }
 
@@ -544,29 +553,28 @@ img, video {
 }
 
 .cta h2 {
+  margin: 0;
   color: #08332B;
   font-weight: 300;
   font-size: clamp(1.25rem, 2vw, 1.8rem);
-  margin: 0;
 }
 
-/* === BOTÓN CTA FINAL === */
 .cta .btn {
   margin-inline: auto;
   background: rgba(188, 200, 198, 0.35);
   padding: 0.65rem 1.5rem;
-  border-radius: 0; /* 🔹 recto por defecto (desktop) */
+  border-radius: 0; /* recto desktop */
 }
 
-/* solo redondeado en mobile */
 @media (max-width: 575.98px) {
   .cta .btn {
     width: 100%;
-    border-radius: 12px; /* 🔹 redondeado solo mobile */
-  }
+    border-radius: 12px;
+  } /* redondeado solo mobile */
 }
-/* ==================== FOOTER ==================== */
-/* full-bleed seguro (sin 100vw) */
+/* =========================================================
+   FOOTER (full-bleed seguro, como en index)
+   =======================================================*/
 .site-footer {
   background: #08332B;
   color: #fff;
@@ -689,8 +697,9 @@ img, video {
     order: 3;
   }
 }
-/* ==================== NAVBAR saneado ==================== */
-/* Por si queda alguna regla vieja que extienda el navbar fuera de la página */
+/* =========================================================
+   NAVBAR (saneada para no desbordar)
+   =======================================================*/
 .navbar {
   margin-inline: 0 !important;
   width: auto !important;
@@ -702,6 +711,360 @@ img, video {
   margin-inline: 0 !important;
   padding-inline: clamp(16px, 6.6vw, 100px) !important;
   max-width: 100%;
+}
+
+/* ====== FILTROS ====== */
+.filters {
+  padding-block: clamp(1rem, 4vw, 1.5rem);
+}
+
+.filters__wrap {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+}
+
+.filters__form {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1rem);
+  align-items: end;
+  background: rgba(188, 200, 198, 0.35);
+  padding: clamp(0.75rem, 2vw, 1rem);
+  border-radius: 10px;
+}
+@media (max-width: 991.98px) {
+  .filters__form {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 575.98px) {
+  .filters__form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filters__field {
+  display: grid;
+  gap: 0.35rem;
+}
+.filters__field span, .filters__field legend {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #08332B;
+}
+.filters__field select, .filters__field input[type=number] {
+  width: 100%;
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #e3e6e5;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.filters__field--range .filters__range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.filters__field--range .filters__range .dash {
+  opacity: 0.6;
+}
+
+.filters__checks {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.35rem 0.75rem;
+  padding: 0;
+  border: 0;
+}
+.filters__checks label {
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.filters__checks input {
+  transform: translateY(1px);
+}
+
+.filters__actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+@media (max-width: 575.98px) {
+  .filters__actions {
+    justify-content: stretch;
+  }
+  .filters__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ====== GALERÍA ====== */
+.gallery-section {
+  padding-block: clamp(1rem, 3vw, 2rem);
+}
+
+.gallery-wrap {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.artwork {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.artwork-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  padding: 14px; /* “marco” blanco */
+  border: 1px solid #e6e8eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.artwork:hover .artwork-img {
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.artwork-info {
+  text-align: center;
+}
+
+.artwork-title {
+  margin: 0 0 0.15rem 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.artwork-meta {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.artwork-price {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.9rem;
+}
+
+/* ====== PAGINACIÓN ====== */
+.pager {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+  flex-wrap: wrap;
+}
+
+.pager__btn, .pager__page {
+  font: inherit;
+  background: rgba(188, 200, 198, 0.35);
+  color: #08332B;
+  border: 0;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pager__btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pager__list {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pager__page.is-active {
+  background: #08332B;
+  color: #fff;
+}
+
+.pager__summary {
+  text-align: center;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.filter-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #08332B;
+}
+
+/* ===== Sobre el artista ===== */
+.about-page {
+  padding-block: clamp(2rem, 6vw, 3.5rem);
+}
+
+.about-container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+}
+
+/* Título */
+.page-title {
+  margin: 0 0 clamp(1rem, 2.5vw, 1.25rem) 0;
+  font-weight: 300;
+  color: #08332B; /* #08332B en tus variables */
+  letter-spacing: 0.01em;
+}
+
+/* Retrato centrado y medido */
+.about-portrait {
+  margin: 0 auto clamp(1rem, 3vw, 1.5rem);
+  width: clamp(160px, 28vw, 320px);
+}
+.about-portrait__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Texto del manifiesto */
+.about-text {
+  max-width: 72ch;
+  margin-inline: auto;
+  color: #08332B;
+  opacity: 0.95; /* como en home */
+  line-height: 1.65;
+}
+.about-text p {
+  margin: 0 0 0.9rem 0;
+}
+
+/* Botón centrado (usa .btn global) */
+.about-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1rem, 4vw, 1.5rem);
+}
+
+/* --- Mobile tweaks (opcional, un pelín más aire) --- */
+@media (max-width: 575.98px) {
+  .about-page {
+    padding-block: clamp(1.5rem, 8vw, 2.25rem);
+  }
+}
+/* ===== CONTACTO ===== */
+.contact-hero {
+  position: relative;
+  height: 420px; /* desktop */
+  margin-inline: 0;
+}
+@media (max-width: 575.98px) {
+  .contact-hero {
+    height: 260px; /* mobile */
+    margin-inline: calc(50% - 50vw); /* full-bleed sin overflow */
+    width: 100vw;
+  }
+}
+.contact-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92);
+  z-index: -2;
+}
+.contact-hero__overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.35));
+  z-index: -1;
+}
+.contact-hero__content {
+  height: 100%;
+  display: grid;
+  align-items: end; /* como tu hero del home */
+  padding-inline: clamp(16px, 6.6vw, 100px);
+  padding-bottom: clamp(1.2rem, 4vw, 2rem);
+}
+.contact-hero__content h1 {
+  margin: 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.contact-info {
+  padding-block: clamp(2rem, 6vw, 3rem);
+}
+.contact-info .container {
+  max-width: 900px;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+  margin-inline: auto;
+  text-align: center;
+}
+.contact-info__block {
+  font-style: normal;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+.contact-info__block a {
+  color: #08332B;
+  text-decoration: none;
+}
+
+/* CTA centrado */
+.contact-cta {
+  margin-top: clamp(1rem, 4vw, 1.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+/* coherencia con el resto: botón recto en desktop, redondeado mobile ya lo manejas global */
+@media (min-width: 992px) {
+  .contact-cta .btn {
+    border-radius: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

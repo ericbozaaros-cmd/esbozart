@@ -1,25 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre el artista</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sobre el artista — ESBOZART</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- CSS del proyecto -->
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-     <div  class="logo">
-      <a href="/index.html">ESBOZART</a>
+
+  <!-- NAVBAR (igual a index) -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="../index.html">ESBOZART</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navCol" aria-controls="navCol" aria-expanded="false"
+              aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navCol">
+        <div class="navbar-nav">
+          <a class="nav-link" href="../index.html">Inicio</a>
+          <a class="nav-link" href="./01 colecciones.html">Colecciones</a>
+          <a class="nav-link active" aria-current="page" href="./03 sobre el artista.html">Sobre el artista</a>
+          <a class="nav-link" href="./04 contacto.html">Contacto</a>
+        </div>
       </div>
-    <nav class="menu">
-      <ul class="ul">  
-        <li> <a href="/index.html">Inicio</a> </li>
-        <li> <a href="/PAGINAS/01 colecciones.html">Colecciones</a> </li>
-        <li> <a href="#" class="active nav">Sobre el artista</a> </li> 
-        <li> <a href="/PAGINAS/04 contacto.html">Contacto</a> </li>
-    </nav>
-  </header>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main>
+    <section class="about-page" aria-labelledby="about-title">
+      <div class="container about-container">
+        <h1 id="about-title" class="page-title">Sobre el artista</h1>
+
+        <figure class="about-portrait">
+          <!-- Cambia la ruta a tu imagen real -->
+          <img class="about-portrait__img"
+               src="../IMAGENES/003_SOBRE_EL_ARTISTA/retrato.jpg"
+               alt="Retrato del artista">
+        </figure>
+
+        <div class="about-text">
+          <p>No soy un ejemplo de nada.</p>
+
+          <p>Nunca tuve la disciplina para ser “normal” ni la paciencia para fingir que lo era. El mundo me ofreció reglas, horarios y sonrisas falsas… yo preferí el caos, la contradicción y la pintura tóxica, el encierro necesario para ver alucinaciones con los ojos abiertos.</p>
+
+          <p>Abandoné la seguridad, los diplomas, la línea recta. Todo eso era un disfraz mal cosido. Lo rompí sin mirar atrás. Ahora paso mis días hablando con los colores, manchando telas como quien invoca fantasmas.</p>
+
+          <p>¿Arte? No estoy seguro de que lo mío lo sea. Prefiero llamarlo exorcismo. Cada óleo es una jaula rota, un espejo sucio, un animal herido que insiste en respirar. No busco gustar ni decorar salas de estar; si alguna de mis pinturas termina en tu pared, será porque te atreviste a dejar entrar un pedazo de mi locura en tu casa.</p>
+
+          <p>Transformo imágenes en magia torcida. Si esperas paisajes bonitos o flores simpáticas, mejor sigue de largo. Aquí encontrarás lo incómodo, lo que no encaja, lo que huele a vida cruda.</p>
+
+          <p>Bueno, tal vez también encuentres belleza… porque todo genio incomprendido es, al final, una contradicción con patas.</p>
+        </div>
+
+        <div class="about-cta">
+          <a href="./04 contacto.html" class="btn">Contáctame</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (igual a index) -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="brand">ESBOZART</div>
+        <nav class="footer-nav" aria-label="Navegación de pie de página">
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./01 colecciones.html">Colecciones</a></li>
+            <li><a href="./03 sobre el artista.html">Nosotros</a></li>
+            <li><a href="./04 contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <hr class="footer-rule" />
+
+      <div class="footer-bottom">
+        <address class="contacto">
+          <a href="mailto:correo@masarquitectos.cl">correo@masarquitectos.cl</a><br />
+          Francisco Noguera 200, Of.1103<br />
+          Providencia, Santiago, Chile<br />
+          Fono: <a href="tel:+56232595180">(562) 3259 5180</a>
+        </address>
+
+        <p class="creditos">Diseño web Eric Boza 2025</p>
+
+        <ul class="social">
+          <li><a href="#" aria-label="Tiktok">Tiktok</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

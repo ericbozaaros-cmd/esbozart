@@ -1,169 +1,380 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <title>Coleciones</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <title>Colecciones – ESBOZART</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tu CSS compilado -->
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
- <!-- HEADER bootstraps-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/index.html">ESBOZART</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        <a class="nav-link" href="/PAGINAS/01 colecciones.html">Colecciones</a>
-        <a class="nav-link" href="/PAGINAS/03 sobre el artista.html">Sobre el artista</a>
-        <a class="nav-link" href="/PAGINAS/04 contacto.html">Contacto</a>
+
+  <!-- NAVBAR (Bootstrap) -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="../index.html">ESBOZART</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCol"
+              aria-controls="navCol" aria-expanded="false" aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navCol">
+        <div class="navbar-nav">
+          <a class="nav-link" href="../index.html">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="./01 colecciones.html">Colecciones</a>
+          <a class="nav-link" href="./03 sobre el artista.html">Sobre el artista</a>
+          <a class="nav-link" href="./04 contacto.html">Contacto</a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- HERO -->
-<section class="hero">
-  <img src="/IMAGENES/002_COLECCIONES/001-BANNER colecciones.jpg" alt="Mujer con pintura en el rostro" class="banner-hero">
-  <div class="hero-content">
-    <h1>Cada cuadro es un instante eterno,<br>listo para habitar tu mundo</h1>
-  </div>
-</section>
+  <section class="hero">
+    <img
+      src="../IMAGENES/002_COLECCIONES/001-BANNER colecciones.jpg"
+      alt="Mujer con pintura en el rostro"
+      class="banner-hero"
+    />
+    <div class="hero-content">
+      <h1>Colecciones</h1>
+    </div>
+  </section>
 
-<!-- GALERÍA -->
-    <section class="gallery-section container">
-        <h2 class="section-colecciones">Colecciones</h2>
-        <div class="gallery">
-            <!-- Obra 1 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 1" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 1</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-            
-            <!-- Obra 2 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 2" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 2</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-            
-            <!-- Obra 3 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 3" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 3</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-            
-            <!-- Obra 4 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 4" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 4</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-            
-            <!-- Obra 5 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 5" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 5</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-            
-            <!-- Obra 6 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 6" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 6</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
+  <!-- FILTROS -->
+  <section class="filters" aria-labelledby="filters-title">
+    <div class="filters__wrap">
+      <h2 id="filters-title" class="sr-only">Filtros</h2>
 
-             <!-- Obra 7 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 6" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 6</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
-             <!-- Obra 8 -->
-            <div class="artwork">
-                <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra 6" class="artwork-img">
-                <div class="artwork-info">
-                    <h3 class="artwork-title">OBRA 6</h3>
-                    <p class="artwork-price">30.000$</p>
-                    <a href="#" class="btn">Ver más</a>
-                </div>
-            </div>
+      <form id="filtersForm" class="filters__form" autocomplete="off">
+        <!-- Fecha (orden) -->
+        <label class="filters__field">
+          <span>Fecha</span>
+          <select name="order" id="fOrder">
+            <option value="desc" selected>Más recientes</option>
+            <option value="asc">Más antiguas</option>
+          </select>
+        </label>
+
+        <!-- Precio -->
+        <label class="filters__field filters__field--range">
+          <span>Precio (CLP)</span>
+          <div class="filters__range">
+            <input type="number" id="fPriceMin" placeholder="Mín" min="0" step="1000">
+            <span class="dash">—</span>
+            <input type="number" id="fPriceMax" placeholder="Máx" min="0" step="1000">
+          </div>
+        </label>
+
+        <!-- Tamaño -->
+        <label class="filters__field">
+          <span>Tamaño</span>
+          <select name="size" id="fSize">
+            <option value="">Todos</option>
+            <option value="S">Pequeño (≤ 30x40)</option>
+            <option value="M">Mediano (hasta 60x80)</option>
+            <option value="L">Grande (&gt; 60x80)</option>
+          </select>
+        </label>
+
+        <!-- Soporte -->
+        <fieldset class="filters__field filters__checks">
+          <legend>Soporte</legend>
+          <label><input type="checkbox" name="support" value="lienzo" checked> Lienzo</label>
+          <label><input type="checkbox" name="support" value="papel" checked> Papel</label>
+          <label><input type="checkbox" name="support" value="print" checked> Prints</label>
+        </fieldset>
+
+        <div class="filters__actions">
+          <button type="submit" class="btn">Aplicar</button>
+          <button type="button" id="btnClear" class="btn btn--light">Limpiar</button>
         </div>
-    </section>
+      </form>
+    </div>
+  </section>
 
-<!-- CTA FINAL -->
-<section class="cta" aria-labelledby="cta-title">
-  <div class="cta-wrap">
-    <h2 id="cta-title">¿Te gustaría ser parte de esta historia?</h2>
-    <a href="https://wa.me/56998038652" class="btn">Habla conmigo</a>
-  </div>
-</section>
+  <!-- GALERÍA -->
+  <section class="gallery-section">
+    <div class="gallery-wrap">
+      <div class="gallery" id="gallery">
+        <!-- ====== EJEMPLOS (usa tus imágenes reales) ======
+             data-attrs:
+               data-date="YYYY-MM-DD"
+               data-price="100000"
+               data-size="S|M|L"
+               data-support="lienzo|papel|print"
+               data-area="2400"  (ancho*alto en cm2 si quieres refinar) -->
 
+        <article class="artwork"
+          data-date="2025-09-12" data-price="100000" data-size="S" data-support="papel" data-area="1200">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80" alt="Obra 1" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 1 – “Kuina”</h3>
+            <p class="artwork-meta">Óleo sobre papel · 20×60 cm</p>
+            <p class="artwork-price">100.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <article class="artwork"
+          data-date="2025-08-25" data-price="180000" data-size="M" data-support="lienzo" data-area="3600">
+          <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=800&q=80" alt="Obra 2" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 2 – “Agua”</h3>
+            <p class="artwork-meta">Óleo sobre lienzo · 40×90 cm</p>
+            <p class="artwork-price">180.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <article class="artwork"
+          data-date="2025-07-10" data-price="260000" data-size="L" data-support="lienzo" data-area="7200">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80" alt="Obra 3" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 3 – “Miradas”</h3>
+            <p class="artwork-meta">Óleo sobre lienzo · 60×120 cm</p>
+            <p class="artwork-price">260.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <!-- duplica/ajusta estas tarjetas con tus datos reales -->
+        <article class="artwork"
+          data-date="2025-09-01" data-price="90000" data-size="S" data-support="print" data-area="900">
+          <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80" alt="Obra 4" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 4 – “Luz”</h3>
+            <p class="artwork-meta">Print · 30×30 cm</p>
+            <p class="artwork-price">90.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <article class="artwork"
+          data-date="2024-12-20" data-price="120000" data-size="S" data-support="papel" data-area="1500">
+          <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80" alt="Obra 5" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 5 – “Amanecer”</h3>
+            <p class="artwork-meta">Óleo sobre papel · 25×60 cm</p>
+            <p class="artwork-price">120.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <article class="artwork"
+          data-date="2025-02-10" data-price="220000" data-size="M" data-support="lienzo" data-area="4800">
+          <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=800&q=80" alt="Obra 6" class="artwork-img">
+          <div class="artwork-info">
+            <h3 class="artwork-title">OBRA 6 – “Ritmo”</h3>
+            <p class="artwork-meta">Óleo sobre lienzo · 50×95 cm</p>
+            <p class="artwork-price">220.000 CLP</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </article>
+
+        <!-- añade más <article.artwork> con los data-* adecuados -->
+      </div>
+
+      <!-- PAGINACIÓN -->
+      <nav class="pager" aria-label="Paginación">
+        <button class="pager__btn" id="btnPrev" disabled>&laquo; Anterior</button>
+        <ul class="pager__list" id="pagerList"><!-- páginas dinámicas --></ul>
+        <button class="pager__btn" id="btnNext">Siguiente &raquo;</button>
+      </nav>
+
+      <p class="pager__summary" id="pagerSummary"></p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="cta-wrap">
+      <h2 id="cta-title">¿Te gustaría ser parte de esta historia?</h2>
+      <a href="https://wa.me/56998038652" class="btn">Habla conmigo</a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <!-- fila superior -->
-    <div class="footer-top">
-      <div class="brand">ESBOZART</div>
-      <nav class="footer-nav" aria-label="Navegación de pie de página">
-        <ul>
-          <li><a href="/index.html">Inicio</a></li>
-          <li><a href="/PAGINAS/01 colecciones.html">Colecciones</a></li>
-          <li><a href="/PAGINAS/03 sobre el artista.html">Nosotros</a></li>
-          <li><a href="/PAGINAS/04 contacto.html">Contacto</a></li>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="brand">ESBOZART</div>
+        <nav class="footer-nav" aria-label="Navegación de pie de página">
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./01 colecciones.html">Colecciones</a></li>
+            <li><a href="./03 sobre el artista.html">Nosotros</a></li>
+            <li><a href="./04 contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+      <hr class="footer-rule" />
+      <div class="footer-bottom">
+        <address class="contacto">
+          <a href="mailto:correo@masarquitectos.cl">correo@masarquitectos.cl</a><br />
+          Francisco Noguera 200, Of.1103<br />
+          Providencia, Santiago, Chile<br />
+          Fono: <a href="tel:+56232595180">(562) 3259 5180</a>
+        </address>
+        <p class="creditos">Diseño web Eric Boza 2025</p>
+        <ul class="social">
+          <li><a href="#" aria-label="Tiktok">Tiktok</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
+  </footer>
 
-    <hr class="footer-rule">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- fila inferior -->
-    <div class="footer-bottom">
-      <address class="contacto">
-        <a href="mailto:correo@masarquitectos.cl">correo@masarquitectos.cl</a><br>
-        Francisco Noguera 200, Of.1103<br>
-        Providencia, Santiago, Chile<br>
-        Fono: <a href="tel:+56232595180">(562) 3259 5180</a>
-      </address>
+  <!-- ====== FILTROS + PAGINACIÓN (vanilla JS) ====== -->
+  <script>
+  (function(){
+    const $gallery = document.getElementById('gallery');
+    const $items = Array.from($gallery.querySelectorAll('.artwork'));
+    const $form = document.getElementById('filtersForm');
+    const $order = document.getElementById('fOrder');
+    const $priceMin = document.getElementById('fPriceMin');
+    const $priceMax = document.getElementById('fPriceMax');
+    const $size = document.getElementById('fSize');
+    const $supports = Array.from($form.querySelectorAll('input[name="support"]'));
+    const $btnClear = document.getElementById('btnClear');
 
-      <p class="creditos">Diseño web Eric Boza 2025</p>
+    const $btnPrev = document.getElementById('btnPrev');
+    const $btnNext = document.getElementById('btnNext');
+    const $pagerList = document.getElementById('pagerList');
+    const $pagerSummary = document.getElementById('pagerSummary');
 
-      <ul class="social">
-        <li><a href="#" aria-label="Tiktok">Tiktok</a></li>
-        <li><a href="#" aria-label="Instagram">Instagram</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+    let filtered = [...$items];
+    let current = 1;
+    let perPage = getPerPage();
+
+    function getPerPage(){
+      const w = window.innerWidth;
+      if (w <= 520) return 6;     // móvil
+      if (w <= 820) return 8;     // tablet
+      return 12;                  // desktop
+    }
+
+    function readCriteria(){
+      const order = $order.value; // 'asc' | 'desc'
+      const min = $priceMin.value ? parseInt($priceMin.value, 10) : -Infinity;
+      const max = $priceMax.value ? parseInt($priceMax.value, 10) : Infinity;
+      const size = $size.value;   // '' | 'S' | 'M' | 'L'
+      const supports = $supports.filter(c => c.checked).map(c => c.value); // ['lienzo', 'papel', 'print']
+      return { order, min, max, size, supports };
+    }
+
+    function applyFilters(){
+      const { order, min, max, size, supports } = readCriteria();
+
+      // filtra
+      filtered = $items.filter(card => {
+        const price = parseInt(card.dataset.price, 10) || 0;
+        const sizeVal = card.dataset.size || '';
+        const sup = (card.dataset.support || '').toLowerCase();
+
+        const okPrice = price >= min && price <= max;
+        const okSize = size ? (sizeVal === size) : true;
+        const okSup = supports.length ? supports.includes(sup) : true;
+        return okPrice && okSize && okSup;
+      });
+
+      // ordena por fecha
+      filtered.sort((a, b) => {
+        const da = new Date(a.dataset.date);
+        const db = new Date(b.dataset.date);
+        return ($order.value === 'asc') ? (da - db) : (db - da);
+      });
+
+      // reinicia paginación
+      current = 1;
+      perPage = getPerPage();
+      render();
+    }
+
+    function render(){
+      // oculta todo
+      $items.forEach(el => el.style.display = 'none');
+
+      // calcula páginas
+      const total = filtered.length;
+      const pages = Math.max(1, Math.ceil(total / perPage));
+      if (current > pages) current = pages;
+
+      // muestra items de la página actual
+      const start = (current - 1) * perPage;
+      const end   = start + perPage;
+      filtered.slice(start, end).forEach(el => el.style.display = '');
+
+      // pager UI
+      buildPager(pages, total);
+    }
+
+    function buildPager(pages, total){
+      // botones prev/next
+      $btnPrev.disabled = (current === 1);
+      $btnNext.disabled = (current === pages);
+
+      // lista de páginas
+      $pagerList.innerHTML = '';
+      for (let p = 1; p <= pages; p++){
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = p;
+        btn.className = 'pager__page' + (p === current ? ' is-active' : '');
+        btn.addEventListener('click', () => { current = p; render(); });
+        li.appendChild(btn);
+        $pagerList.appendChild(li);
+      }
+
+      // resumen
+      const first = total ? ( (current - 1)*perPage + 1 ) : 0;
+      const last  = Math.min(current*perPage, total);
+      $pagerSummary.textContent = total
+        ? `Página ${current} de ${Math.ceil(total/perPage)} — Mostrando ${first}–${last} de ${total} obras`
+        : `Sin resultados con los filtros seleccionados`;
+    }
+
+    // eventos
+    $form.addEventListener('submit', (e) => { e.preventDefault(); applyFilters(); });
+    $btnClear.addEventListener('click', () => {
+      $order.value = 'desc';
+      $priceMin.value = '';
+      $priceMax.value = '';
+      $size.value = '';
+      $supports.forEach(c => c.checked = true);
+      applyFilters();
+    });
+    $btnPrev.addEventListener('click', () => { if (current > 1) { current--; render(); } });
+    $btnNext.addEventListener('click', () => { current++; render(); });
+
+    window.addEventListener('resize', () => {
+      const newPer = getPerPage();
+      if (newPer !== perPage){
+        perPage = newPer; render();
+      }
+    });
+
+    // init
+    applyFilters();
+  })();
+  </script>
+</body>
+</html>

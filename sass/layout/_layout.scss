@@ -350,3 +350,61 @@ img, video { display: block; max-width: 100%; height: auto; }
     box-sizing: border-box;
   }
 }
+/* =========================================================
+   CONTACTO — título alto-izquierda en desktop, centrado en móvil
+   (coincide con tu HTML .contact-hero / __img / __content)
+   =======================================================*/
+.contact-hero{
+  position: relative !important;
+  height: 400px !important;
+  overflow: hidden;
+}
+@media (max-width: 575.98px){
+  .contact-hero{ height: 263px !important; }
+}
+
+/* fondo */
+.contact-hero__img{
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: brightness(80%) !important;
+}
+
+/* contenido */
+.contact-hero__content{
+  position: absolute !important;
+  inset: 0 !important;
+
+  /* 1) DESKTOP: alto-izquierda (sin translate) */
+  display: flex !important;
+  align-items: flex-start !important;       /* pega arriba */
+  justify-content: flex-start !important;   /* a la izquierda */
+
+  /* “gutter” lateral + empuje desde arriba para caer en la zona roja */
+  padding-inline: clamp(16px, 6.6vw, 100px) !important;
+  padding-top: clamp(60px, 18vh, 160px) !important;  /* <-- ajusta si la quieres más alta/baja */
+
+  text-align: left !important;
+}
+
+.contact-hero__content h1{
+  margin: 0 !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: clamp(1.2rem, 2.2vw, 2.5rem) !important;
+  line-height: 1.25 !important;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35) !important;
+}
+
+/* 2) MÓVIL: centrado pleno */
+@media (max-width: 575.98px){
+  .contact-hero__content{
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 0 !important;              /* quita el empuje vertical en mobile */
+    text-align: center !important;
+  }
+}

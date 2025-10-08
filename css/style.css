@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* Opcional (solo para quitar la advertencia de mix): */
 /* ===== Reset mínimo ===== */
 * {
   margin: 0;
@@ -53,7 +54,7 @@ body {
 
 /* Enlaces */
 .navbar .nav-link {
-  color: #08332B !important; /* igual al texto del botón */
+  color: rgb(6.4, 40.8, 34.4) !important;
   font-weight: 500; /* NO aumentamos tamaño ni transform */
   text-decoration: none;
 }
@@ -132,7 +133,12 @@ body {
 }
 
 /* =========================================================
-   BASE • Resets mínimos y utilidades seguras
+   LAYOUT GLOBAL DEL SITIO
+   Archivo: sass/layout/_layout.scss
+   Depende de: sass/base/_variables.scss
+   =======================================================*/
+/* =========================================================
+   0) BASE mínima del layout (no pisa tu _base.scss)
    =======================================================*/
 *,
 *::before,
@@ -143,7 +149,7 @@ body {
 html, body {
   margin: 0;
   max-width: 100%;
-  overflow-x: clip; /* evita barra horizontal */
+  overflow-x: clip; /* evita scroll horizontal */
 }
 
 img, video {
@@ -152,24 +158,36 @@ img, video {
   height: auto;
 }
 
-/* En mobile los “gutters” laterales los da cada .container */
+/* Gutters en mobile los da cada .container */
 @media (max-width: 575.98px) {
   body {
     padding: 0 !important;
   }
 }
 /* =========================================================
-   HERO
-   (mobile queda igual; en desktop altura cómoda)
+   1) BOTÓN GLOBAL (solo ajustes mínimos aquí)
+   - Si ya defines .btn en _base.scss, esto NO la reemplaza,
+     sólo asegura el mismo ancho en mobile para TODAS las páginas.
+   =======================================================*/
+@media (max-width: 575.98px) {
+  .btn {
+    display: block !important;
+    width: 100% !important; /* MISMO comportamiento móvil en todo el sitio */
+    border-radius: 12px; /* igual que en otras secciones */
+    text-align: center;
+  }
+}
+/* =========================================================
+   2) HERO (banner con imagen de fondo)
    =======================================================*/
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: #fff;
   width: 100%;
-  height: 400px; /* desktop por defecto */
+  color: #fff;
+  height: 400px;
 }
 
 @media (max-width: 575.98px) {
@@ -183,25 +201,25 @@ img, video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
   filter: brightness(80%);
+  z-index: -2;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45));
   z-index: -1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45));
 }
 
 .hero-content {
-  padding-inline: clamp(16px, 6.6vw, 100px);
+  padding-inline: clamp(16px, 6.6vw, 100px); /* mismo gutter que el sitio */
   width: 100%;
 }
 
 .hero-content h1 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   font-weight: 500;
   font-size: clamp(1.2rem, 2.2vw, 2.5rem);
   line-height: 1.25;
@@ -217,10 +235,10 @@ img, video {
 @media (min-width: 992px) {
   .hero .btn {
     border-radius: 0;
-  } /* recto solo desktop */
+  } /* botón recto sólo en desktop */
 }
 /* =========================================================
-   INTRO
+   3) INTRO (bloque corto)
    =======================================================*/
 .intro {
   padding-block: clamp(2rem, 6vw, 3.5rem);
@@ -234,7 +252,7 @@ img, video {
 }
 
 .intro h2 {
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1.25rem, 2.2vw, 2rem);
@@ -248,16 +266,11 @@ img, video {
   opacity: 0.85;
 }
 
-.intro .btn {
-  margin-inline: auto;
-  background: rgba(188, 200, 198, 0.35);
-}
-
 /* =========================================================
-   CATEGORÍAS
+   4) CATEGORÍAS (grilla)
    =======================================================*/
 .categorias-obra {
-  padding-top: 0; /* pegada arriba */
+  padding-top: 0;
   padding-bottom: clamp(2rem, 6vw, 3.5rem);
   text-align: center;
 }
@@ -287,7 +300,7 @@ img, video {
 }
 
 .cat h3 {
-  margin: 0 0 0.65rem 0;
+  margin: 0 0 0.65rem;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1rem, 1.8vw, 1.35rem);
@@ -323,12 +336,11 @@ img, video {
 }
 
 /* =========================================================
-   ABOUT
-   (mobile queda como lo tenías; desktop: bordes rectos)
+   5) ABOUT (bloque del home en 2 columnas)
    =======================================================*/
 .about {
   padding-top: 0;
-  padding-bottom: clamp(2rem, 6vw, 3.5rem); /* aire normal (se ajusta en desktop) */
+  padding-bottom: clamp(2rem, 6vw, 3.5rem);
 }
 
 .about .container {
@@ -370,7 +382,7 @@ img, video {
 }
 
 .about-text h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
   font-weight: 300;
   color: #08332B;
   font-size: clamp(1.25rem, 2.2vw, 1.8rem);
@@ -379,20 +391,20 @@ img, video {
 .about-text p {
   line-height: 1.55;
   opacity: 0.9;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
 }
 
 .about-right {
   background: #43605B;
   color: #fff;
   padding: clamp(1.5rem, 4vw, 2rem);
-  border-radius: 10px; /* redondeado en mobile/tablet */
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  gap: 1rem;
 }
 
 .about-right h2 {
@@ -423,12 +435,12 @@ img, video {
   }
 }
 /* =========================================================
-   TESTIMONIO
-   (mobile queda igual; desktop pegado a about y sin padding abajo)
+   6) TESTIMONIO
    =======================================================*/
 .testi {
   padding-block: 0;
-} /* por defecto sin aire extra */
+}
+
 .testi .container {
   max-width: 1400px;
   margin-inline: auto;
@@ -446,7 +458,7 @@ img, video {
   background: #43605B;
   color: #fff;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 10px; /* redondeado mobile/tablet */
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -455,7 +467,7 @@ img, video {
 }
 
 #testi-title {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   font-weight: 300;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
 }
@@ -494,17 +506,15 @@ img, video {
     border-radius: 10px;
   }
 }
-/* ---------- Desktop: “pegado” a ABOUT + sin padding inferior ---------- */
+/* Pegado a ABOUT + sin padding inferior en desktop */
 @media (min-width: 992px) {
-  /* 1) Menos aire entre ABOUT y TESTI */
   .about {
-    padding-bottom: 1rem; /* ↓ antes más grande; ahora muy corto */
+    padding-bottom: 1rem;
   }
   .testi {
-    padding-top: 1rem; /* pequeño respiro entre bloques */
-    padding-bottom: 0; /* ❗ nada de espacio abajo, como pediste */
+    padding-top: 1rem;
+    padding-bottom: 0;
   }
-  /* 2) Igualo alturas y quito redondeos */
   .about-left {
     min-height: 350px;
     display: grid;
@@ -535,7 +545,7 @@ img, video {
   }
 }
 /* =========================================================
-   CTA FINAL
+   7) CTA FINAL
    =======================================================*/
 .cta {
   padding-block: clamp(4rem, 8vw, 4rem);
@@ -559,26 +569,13 @@ img, video {
   font-size: clamp(1.25rem, 2vw, 1.8rem);
 }
 
-.cta .btn {
-  margin-inline: auto;
-  background: rgba(188, 200, 198, 0.35);
-  padding: 0.65rem 1.5rem;
-  border-radius: 0; /* recto desktop */
-}
-
-@media (max-width: 575.98px) {
-  .cta .btn {
-    width: 100%;
-    border-radius: 12px;
-  } /* redondeado solo mobile */
-}
 /* =========================================================
-   FOOTER (full-bleed seguro, como en index)
+   8) FOOTER
    =======================================================*/
 .site-footer {
   background: #08332B;
   color: #fff;
-  margin-inline: calc(50% - 50vw);
+  margin-inline: calc(50% - 50vw); /* fondo full-bleed seguro */
 }
 
 .footer-inner {
@@ -698,7 +695,7 @@ img, video {
   }
 }
 /* =========================================================
-   NAVBAR (saneada para no desbordar)
+   9) NAVBAR (sin desbordes)
    =======================================================*/
 .navbar {
   margin-inline: 0 !important;
@@ -713,6 +710,171 @@ img, video {
   max-width: 100%;
 }
 
+/* =========================================================
+   10) PÁGINA: “SOBRE EL ARTISTA”
+   - Desktop: imagen arriba a la izquierda; texto debajo (columna)
+   - Mobile: todo centrado (título, imagen, párrafos y botón)
+   =======================================================*/
+.about-page {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.about-page .about-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+}
+
+.about-page .about-title {
+  margin: 0 0 1.5rem;
+  padding-block: 0.5rem; /* aire arriba/abajo simétrico */
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+  line-height: 1.2;
+  color: #08332B;
+}
+
+.about-page .about-portrait {
+  margin: 0 0 1.5rem;
+  width: 140px; /* tamaño imagen en desktop */
+}
+
+.about-page .about-portrait__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.about-page .about-text {
+  text-align: left;
+  line-height: 1.7;
+  max-width: none;
+}
+
+.about-page .about-text p {
+  margin: 0 0 1rem;
+}
+
+.about-page .about-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Mobile: centrado total (el .btn se hace full-width por la regla global) */
+@media (max-width: 575.98px) {
+  .about-page {
+    padding-block: 2.5rem;
+    text-align: center;
+  }
+  .about-page .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-inline: 1rem;
+  }
+  .about-page .about-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+  .about-page .about-portrait {
+    width: 170px;
+    margin-bottom: 1.25rem;
+  }
+  .about-page .about-text {
+    text-align: center;
+    max-width: 90%;
+  }
+}
+/* ===== FIX móvil: que los hijos ocupen todo el ancho ===== */
+@media (max-width: 575.98px) {
+  .about-page .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* << antes: center (encogía el ancho de los hijos) */
+    text-align: center;
+    padding-inline: 1rem;
+  }
+  /* Elementos que sí deben verse centrados visualmente */
+  .about-page .about-portrait {
+    width: 170px;
+    margin: 0 auto 1.25rem; /* centra el retrato */
+  }
+  .about-page .about-text {
+    max-width: 90%;
+    margin-inline: auto; /* centra el bloque de párrafos */
+  }
+  /* El contenedor del botón ahora ocupa 100% (por stretch) */
+  .about-page .about-cta {
+    width: 100%;
+  }
+  /* Si tu .btn global no se aplica, fuerza aquí (opcional) */
+  .about-page .about-cta .btn {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+}
+/* ===== Sobre el artista ===== */
+.about-page {
+  padding-block: clamp(2rem, 6vw, 3.5rem);
+}
+
+.about-container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 6.6vw, 100px);
+}
+
+/* Título */
+.page-title {
+  margin: 0 0 clamp(1rem, 2.5vw, 1.25rem) 0;
+  font-weight: 300;
+  color: #08332B; /* #08332B en tus variables */
+  letter-spacing: 0.01em;
+}
+
+/* Retrato centrado y medido */
+.about-portrait {
+  margin: 0 auto clamp(1rem, 3vw, 1.5rem);
+  width: clamp(160px, 28vw, 320px);
+}
+.about-portrait__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Texto del manifiesto */
+.about-text {
+  max-width: 72ch;
+  margin-inline: auto;
+  color: #08332B;
+  opacity: 0.95; /* como en home */
+  line-height: 1.65;
+}
+.about-text p {
+  margin: 0 0 0.9rem 0;
+}
+
+/* Botón centrado (usa .btn global) */
+.about-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1rem, 4vw, 1.5rem);
+}
+
+/* --- Mobile tweaks (opcional, un pelín más aire) --- */
+@media (max-width: 575.98px) {
+  .about-page {
+    padding-block: clamp(1.5rem, 8vw, 2.25rem);
+  }
+}
 /* ====== FILTROS ====== */
 .filters {
   padding-block: clamp(1rem, 4vw, 1.5rem);
@@ -933,63 +1095,6 @@ img, video {
   color: #08332B;
 }
 
-/* ===== Sobre el artista ===== */
-.about-page {
-  padding-block: clamp(2rem, 6vw, 3.5rem);
-}
-
-.about-container {
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-inline: clamp(16px, 6.6vw, 100px);
-}
-
-/* Título */
-.page-title {
-  margin: 0 0 clamp(1rem, 2.5vw, 1.25rem) 0;
-  font-weight: 300;
-  color: #08332B; /* #08332B en tus variables */
-  letter-spacing: 0.01em;
-}
-
-/* Retrato centrado y medido */
-.about-portrait {
-  margin: 0 auto clamp(1rem, 3vw, 1.5rem);
-  width: clamp(160px, 28vw, 320px);
-}
-.about-portrait__img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* Texto del manifiesto */
-.about-text {
-  max-width: 72ch;
-  margin-inline: auto;
-  color: #08332B;
-  opacity: 0.95; /* como en home */
-  line-height: 1.65;
-}
-.about-text p {
-  margin: 0 0 0.9rem 0;
-}
-
-/* Botón centrado (usa .btn global) */
-.about-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(1rem, 4vw, 1.5rem);
-}
-
-/* --- Mobile tweaks (opcional, un pelín más aire) --- */
-@media (max-width: 575.98px) {
-  .about-page {
-    padding-block: clamp(1.5rem, 8vw, 2.25rem);
-  }
-}
 /* ===== CONTACTO ===== */
 .contact-hero {
   position: relative;

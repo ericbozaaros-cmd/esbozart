@@ -1,6 +1,7 @@
-@use 'variables';
-@use 'base';
-@use 'layout';
-@use 'collections';
-@use 'about';
-@use 'contact';
+@import 'base/variables';
+@import 'base/base';
+
+@import 'layout/layout';
+@import 'layout/about';
+@import 'layout/collections';
+@import 'layout/contact';

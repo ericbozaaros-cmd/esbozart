@@ -1,4 +1,6 @@
-@use 'variables' as v;
+@use './variables' as v;   // está en la MISMA carpeta base
+/* Opcional (solo para quitar la advertencia de mix): */
+@use 'sass:color';
 
 /* ===== Reset mínimo ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,7 +48,7 @@ body{
 
 /* Enlaces */
 .navbar .nav-link{
-  color: v.$color-text !important;   /* igual al texto del botón */
+  color: color.mix(#000, v.$color-text, 20%) !important;
   font-weight: 500;                  /* NO aumentamos tamaño ni transform */
   text-decoration: none;
 }

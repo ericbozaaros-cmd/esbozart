@@ -5,33 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
   <title>Colecciones – ESBOZART</title>
 
   <!-- Fuente -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet"/>
 
   <!-- Tu CSS compilado -->
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <!-- NAVBAR (Bootstrap) -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="../index.html">ESBOZART</a>
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCol"
               aria-controls="navCol" aria-expanded="false" aria-label="Alternar navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse justify-content-end" id="navCol">
         <div class="navbar-nav">
           <a class="nav-link" href="../index.html">Inicio</a>
@@ -45,158 +40,126 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img
-      src="../IMAGENES/002_COLECCIONES/001-BANNER colecciones.jpg"
-      alt="Mujer con pintura en el rostro"
-      class="banner-hero"
-    />
-    <div class="hero-content">
-      <h1>Colecciones</h1>
-    </div>
+    <img src="../IMAGENES/002_COLECCIONES/001-BANNER colecciones.jpg" alt="Mujer con pintura en el rostro" class="banner-hero"/>
+    <div class="hero-content"><h1>Colecciones</h1></div>
   </section>
 
-  <!-- FILTROS -->
-  <section class="filters" aria-labelledby="filters-title">
-    <div class="filters__wrap">
-      <h2 id="filters-title" class="sr-only">Filtros</h2>
+  <!-- COLECCIONES (sidebar + contenido) -->
+  <section class="collections py-4">
+    <div class="container-xxl">
+      <div class="row g-4">
+        <!-- SIDEBAR FILTROS -->
+        <aside class="col-lg-3">
+          <div class="filters-panel">
+            <h2 class="h6 mb-3">Filtrar por</h2>
 
-      <form id="filtersForm" class="filters__form" autocomplete="off">
-        <!-- Fecha (orden) -->
-        <label class="filters__field">
-          <span>Fecha</span>
-          <select name="order" id="fOrder">
-            <option value="desc" selected>Más recientes</option>
-            <option value="asc">Más antiguas</option>
-          </select>
-        </label>
+            <form id="filtersForm" class="filters__form filters__form--sidebar" autocomplete="off">
+              <!-- Categorías -->
+              <fieldset class="filters__field filters__checks filters__checks--stack">
+                <legend>Categorías</legend>
+                <label><input type="checkbox" name="category" value="retratos" checked> Retratos</label>
+                <label><input type="checkbox" name="category" value="figura" checked> Figura humana</label>
+                <label><input type="checkbox" name="category" value="oscuro" checked> Oscuro</label>
+              </fieldset>
 
-        <!-- Precio -->
-        <label class="filters__field filters__field--range">
-          <span>Precio (CLP)</span>
-          <div class="filters__range">
-            <input type="number" id="fPriceMin" placeholder="Mín" min="0" step="1000">
-            <span class="dash">—</span>
-            <input type="number" id="fPriceMax" placeholder="Máx" min="0" step="1000">
+              <!-- Tamaño (muestra solo letra) -->
+              <fieldset class="filters__field filters__checks filters__checks--stack">
+                <legend>Tamaño</legend>
+                <label><input type="checkbox" name="size" value="S"> S</label>
+                <label><input type="checkbox" name="size" value="M"> M</label>
+                <label><input type="checkbox" name="size" value="L"> L</label>
+              </fieldset>
+
+              <!-- Soporte -->
+              <fieldset class="filters__field filters__checks filters__checks--stack">
+                <legend>Soporte</legend>
+                <label><input type="checkbox" name="support" value="lienzo" checked> Lienzo</label>
+                <label><input type="checkbox" name="support" value="papel" checked> Papel</label>
+                <label><input type="checkbox" name="support" value="print" checked> Prints</label>
+              </fieldset>
+
+              <!-- Precio -->
+              <label class="filters__field filters__field--range">
+                <span>Precio (CLP)</span>
+                <div class="filters__range">
+                  <input type="number" id="fPriceMin" placeholder="Mín" min="0" step="1000">
+                  <span class="dash">—</span>
+                  <input type="number" id="fPriceMax" placeholder="Máx" min="0" step="1000">
+                </div>
+              </label>
+
+              <div class="filters__actions">
+                <button type="submit" class="btn">Aplicar</button>
+                <button type="button" id="btnClear" class="btn btn--light">Limpiar</button>
+              </div>
+            </form>
           </div>
-        </label>
+        </aside>
 
-        <!-- Tamaño -->
-        <label class="filters__field">
-          <span>Tamaño</span>
-          <select name="size" id="fSize">
-            <option value="">Todos</option>
-            <option value="S">Pequeño (≤ 30x40)</option>
-            <option value="M">Mediano (hasta 60x80)</option>
-            <option value="L">Grande (&gt; 60x80)</option>
-          </select>
-        </label>
+        <!-- CONTENIDO -->
+        <div class="col-lg-9">
+          <div class="d-flex justify-content-end align-items-center mb-3 gap-2">
+            <label for="fOrder" class="small mb-0">Ordenar por</label>
+            <select id="fOrder" class="form-select form-select-sm order-select">
+              <option value="date_desc" selected>Fecha: más recientes</option>
+              <option value="date_asc">Fecha: más antiguas</option>
+              <option value="price_desc">Precio: más alto</option>
+              <option value="price_asc">Precio: más bajo</option>
+            </select>
+          </div>
 
-        <!-- Soporte -->
-        <fieldset class="filters__field filters__checks">
-          <legend>Soporte</legend>
-          <label><input type="checkbox" name="support" value="lienzo" checked> Lienzo</label>
-          <label><input type="checkbox" name="support" value="papel" checked> Papel</label>
-          <label><input type="checkbox" name="support" value="print" checked> Prints</label>
-        </fieldset>
+          <!-- GALERÍA -->
+          <div class="gallery" id="gallery">
+            <!-- data-status: disponible | vendida -->
+            <article class="artwork"
+              data-date="2025-09-12" data-price="100000" data-size="S" data-support="papel"
+              data-category="retratos" data-status="disponible">
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80" alt="OBRA 1 – Kuina" class="artwork-img">
+              <div class="artwork-info">
+                <span class="artwork-status">Disponible</span>
+                <h3 class="artwork-title">OBRA 1 – “Kuina”</h3>
+                <p class="artwork-meta">Óleo sobre papel · 20×60 cm</p>
+                <p class="artwork-price" data-currency="CLP">100.000 CLP</p>
+                <a href="#" class="btn artwork-more" data-bs-toggle="modal" data-bs-target="#artModal">Ver más</a>
+              </div>
+            </article>
 
-        <div class="filters__actions">
-          <button type="submit" class="btn">Aplicar</button>
-          <button type="button" id="btnClear" class="btn btn--light">Limpiar</button>
+            <article class="artwork"
+              data-date="2025-08-25" data-price="180000" data-size="M" data-support="lienzo"
+              data-category="figura" data-status="vendida">
+              <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=800&q=80" alt="OBRA 2 – Agua" class="artwork-img">
+              <div class="artwork-info">
+                <span class="artwork-status">Vendida</span>
+                <h3 class="artwork-title">OBRA 2 – “Agua”</h3>
+                <p class="artwork-meta">Óleo sobre lienzo · 40×90 cm</p>
+                <p class="artwork-price" data-currency="CLP">180.000 CLP</p>
+                <a href="#" class="btn artwork-more" data-bs-toggle="modal" data-bs-target="#artModal">Ver más</a>
+              </div>
+            </article>
+
+            <article class="artwork"
+              data-date="2025-07-10" data-price="260000" data-size="L" data-support="lienzo"
+              data-category="oscuro" data-status="disponible">
+              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80" alt="OBRA 3 – Miradas" class="artwork-img">
+              <div class="artwork-info">
+                <span class="artwork-status">Disponible</span>
+                <h3 class="artwork-title">OBRA 3 – “Miradas”</h3>
+                <p class="artwork-meta">Óleo sobre lienzo · 60×120 cm</p>
+                <p class="artwork-price" data-currency="CLP">260.000 CLP</p>
+                <a href="#" class="btn artwork-more" data-bs-toggle="modal" data-bs-target="#artModal">Ver más</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Paginación -->
+          <nav class="pager" aria-label="Paginación">
+            <button class="pager__btn" id="btnPrev" disabled>&laquo; Anterior</button>
+            <ul class="pager__list" id="pagerList"></ul>
+            <button class="pager__btn" id="btnNext">Siguiente &raquo;</button>
+          </nav>
+          <p class="pager__summary" id="pagerSummary"></p>
         </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- GALERÍA -->
-  <section class="gallery-section">
-    <div class="gallery-wrap">
-      <div class="gallery" id="gallery">
-        <!-- ====== EJEMPLOS (usa tus imágenes reales) ======
-             data-attrs:
-               data-date="YYYY-MM-DD"
-               data-price="100000"
-               data-size="S|M|L"
-               data-support="lienzo|papel|print"
-               data-area="2400"  (ancho*alto en cm2 si quieres refinar) -->
-
-        <article class="artwork"
-          data-date="2025-09-12" data-price="100000" data-size="S" data-support="papel" data-area="1200">
-          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80" alt="Obra 1" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 1 – “Kuina”</h3>
-            <p class="artwork-meta">Óleo sobre papel · 20×60 cm</p>
-            <p class="artwork-price">100.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <article class="artwork"
-          data-date="2025-08-25" data-price="180000" data-size="M" data-support="lienzo" data-area="3600">
-          <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?w=800&q=80" alt="Obra 2" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 2 – “Agua”</h3>
-            <p class="artwork-meta">Óleo sobre lienzo · 40×90 cm</p>
-            <p class="artwork-price">180.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <article class="artwork"
-          data-date="2025-07-10" data-price="260000" data-size="L" data-support="lienzo" data-area="7200">
-          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80" alt="Obra 3" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 3 – “Miradas”</h3>
-            <p class="artwork-meta">Óleo sobre lienzo · 60×120 cm</p>
-            <p class="artwork-price">260.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <!-- duplica/ajusta estas tarjetas con tus datos reales -->
-        <article class="artwork"
-          data-date="2025-09-01" data-price="90000" data-size="S" data-support="print" data-area="900">
-          <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=800&q=80" alt="Obra 4" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 4 – “Luz”</h3>
-            <p class="artwork-meta">Print · 30×30 cm</p>
-            <p class="artwork-price">90.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <article class="artwork"
-          data-date="2024-12-20" data-price="120000" data-size="S" data-support="papel" data-area="1500">
-          <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80" alt="Obra 5" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 5 – “Amanecer”</h3>
-            <p class="artwork-meta">Óleo sobre papel · 25×60 cm</p>
-            <p class="artwork-price">120.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <article class="artwork"
-          data-date="2025-02-10" data-price="220000" data-size="M" data-support="lienzo" data-area="4800">
-          <img src="https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=800&q=80" alt="Obra 6" class="artwork-img">
-          <div class="artwork-info">
-            <h3 class="artwork-title">OBRA 6 – “Ritmo”</h3>
-            <p class="artwork-meta">Óleo sobre lienzo · 50×95 cm</p>
-            <p class="artwork-price">220.000 CLP</p>
-            <a href="#" class="btn">Ver más</a>
-          </div>
-        </article>
-
-        <!-- añade más <article.artwork> con los data-* adecuados -->
       </div>
-
-      <!-- PAGINACIÓN -->
-      <nav class="pager" aria-label="Paginación">
-        <button class="pager__btn" id="btnPrev" disabled>&laquo; Anterior</button>
-        <ul class="pager__list" id="pagerList"><!-- páginas dinámicas --></ul>
-        <button class="pager__btn" id="btnNext">Siguiente &raquo;</button>
-      </nav>
-
-      <p class="pager__summary" id="pagerSummary"></p>
     </div>
   </section>
 
@@ -207,6 +170,32 @@
       <a href="https://wa.me/56998038652" class="btn">Habla conmigo</a>
     </div>
   </section>
+
+  <!-- MODAL DETALLE DE OBRA -->
+  <div class="modal fade" id="artModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <button type="button" class="btn-close ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div class="modal-body">
+          <div class="row g-4 align-items-start">
+            <div class="col-12 col-lg-6">
+              <img id="mImg" class="img-fluid rounded" alt="Vista ampliada">
+            </div>
+            <div class="col-12 col-lg-6">
+              <h3 id="mTitle" class="mb-2"></h3>
+              <p id="mMeta" class="text-muted mb-1"></p>
+              <p class="mb-1 d-none" id="mPriceRow"><strong>Precio:</strong> <span id="mPrice"></span></p>
+              <p class="mb-1"><strong>Tamaño:</strong> <span id="mSize"></span></p>
+              <p class="mb-1"><strong>Soporte:</strong> <span id="mSupport"></span></p>
+              <p class="mb-1"><strong>Categoría:</strong> <span id="mCategory"></span></p>
+              <p class="mb-3"><strong>Estado:</strong> <span id="mStatus"></span></p>
+              <a id="mWhatsapp" class="btn w-100" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
@@ -242,17 +231,19 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- ====== FILTROS + PAGINACIÓN (vanilla JS) ====== -->
+  <!-- JS: filtros + paginación + modal + WhatsApp + orden -->
   <script>
   (function(){
     const $gallery = document.getElementById('gallery');
     const $items = Array.from($gallery.querySelectorAll('.artwork'));
     const $form = document.getElementById('filtersForm');
+
     const $order = document.getElementById('fOrder');
     const $priceMin = document.getElementById('fPriceMin');
     const $priceMax = document.getElementById('fPriceMax');
-    const $size = document.getElementById('fSize');
+    const $sizes = Array.from($form.querySelectorAll('input[name="size"]'));
     const $supports = Array.from($form.querySelectorAll('input[name="support"]'));
+    const $categories = Array.from($form.querySelectorAll('input[name="category"]'));
     const $btnClear = document.getElementById('btnClear');
 
     const $btnPrev = document.getElementById('btnPrev');
@@ -260,78 +251,115 @@
     const $pagerList = document.getElementById('pagerList');
     const $pagerSummary = document.getElementById('pagerSummary');
 
+    // Modal
+    const $mImg = document.getElementById('mImg');
+    const $mTitle = document.getElementById('mTitle');
+    const $mMeta = document.getElementById('mMeta');
+    const $mPrice = document.getElementById('mPrice');
+    const $mPriceRow = document.getElementById('mPriceRow');
+    const $mSize = document.getElementById('mSize');
+    const $mSupport = document.getElementById('mSupport');
+    const $mCategory = document.getElementById('mCategory');
+    const $mStatus = document.getElementById('mStatus');
+    const $mWhatsapp = document.getElementById('mWhatsapp');
+    const WA_NUMBER = '56998038652';
+
     let filtered = [...$items];
     let current = 1;
     let perPage = getPerPage();
 
     function getPerPage(){
       const w = window.innerWidth;
-      if (w <= 520) return 6;     // móvil
-      if (w <= 820) return 8;     // tablet
-      return 12;                  // desktop
+      if (w <= 520) return 6;
+      if (w <= 820) return 8;
+      return 12;
     }
 
     function readCriteria(){
-      const order = $order.value; // 'asc' | 'desc'
+      const order = $order.value;
       const min = $priceMin.value ? parseInt($priceMin.value, 10) : -Infinity;
       const max = $priceMax.value ? parseInt($priceMax.value, 10) : Infinity;
-      const size = $size.value;   // '' | 'S' | 'M' | 'L'
-      const supports = $supports.filter(c => c.checked).map(c => c.value); // ['lienzo', 'papel', 'print']
-      return { order, min, max, size, supports };
+      let sizes = $sizes.filter(c => c.checked).map(c => c.value.toUpperCase());
+      const supports = $supports.filter(c => c.checked).map(c => c.value.toLowerCase());
+      const categories = $categories.filter(c => c.checked).map(c => c.value.toLowerCase());
+      if (sizes.length === 0) sizes = ['S','M','L']; // si no marcas, se considera todo
+      return { order, min, max, sizes, supports, categories };
     }
 
     function applyFilters(){
-      const { order, min, max, size, supports } = readCriteria();
+      const { order, min, max, sizes, supports, categories } = readCriteria();
 
-      // filtra
       filtered = $items.filter(card => {
         const price = parseInt(card.dataset.price, 10) || 0;
-        const sizeVal = card.dataset.size || '';
+        const sizeVal = (card.dataset.size || '').toUpperCase();
         const sup = (card.dataset.support || '').toLowerCase();
+        const cat = (card.dataset.category || '').toLowerCase();
 
         const okPrice = price >= min && price <= max;
-        const okSize = size ? (sizeVal === size) : true;
-        const okSup = supports.length ? supports.includes(sup) : true;
-        return okPrice && okSize && okSup;
+        const okSize  = sizes.includes(sizeVal);
+        const okSup   = supports.length ? supports.includes(sup) : true;
+        const okCat   = categories.length ? categories.includes(cat) : true;
+        return okPrice && okSize && okSup && okCat;
       });
 
-      // ordena por fecha
+      // Orden
       filtered.sort((a, b) => {
+        const pa = parseInt(a.dataset.price, 10) || 0;
+        const pb = parseInt(b.dataset.price, 10) || 0;
         const da = new Date(a.dataset.date);
         const db = new Date(b.dataset.date);
-        return ($order.value === 'asc') ? (da - db) : (db - da);
+        switch (order) {
+          case 'price_asc':  return pa - pb;
+          case 'price_desc': return pb - pa;
+          case 'date_asc':   return da - db;
+          default:           return db - da; // date_desc
+        }
       });
 
-      // reinicia paginación
       current = 1;
       perPage = getPerPage();
       render();
     }
 
     function render(){
-      // oculta todo
-      $items.forEach(el => el.style.display = 'none');
+      // Estado + visibilidad de precio (tarjetas)
+      $items.forEach(card => {
+        const status = (card.dataset.status || '').toLowerCase();
+        const statusEl = card.querySelector('.artwork-status');
+        const priceEl  = card.querySelector('.artwork-price');
+        if (statusEl) {
+          statusEl.textContent = (status === 'vendida') ? 'Vendida' : 'Disponible';
+          statusEl.classList.toggle('is-sold', status === 'vendida');
+        }
+        if (priceEl) priceEl.style.display = (status === 'vendida') ? 'none' : '';
+      });
 
-      // calcula páginas
+      // Paginación
       const total = filtered.length;
       const pages = Math.max(1, Math.ceil(total / perPage));
       if (current > pages) current = pages;
 
-      // muestra items de la página actual
       const start = (current - 1) * perPage;
       const end   = start + perPage;
-      filtered.slice(start, end).forEach(el => el.style.display = '');
+      const pageSlice = filtered.slice(start, end);
 
-      // pager UI
+      // Oculta todo
+      $items.forEach(el => el.style.display = 'none');
+
+      // Reordenar DOM en el orden de pageSlice
+      const frag = document.createDocumentFragment();
+      pageSlice.forEach(el => {
+        el.style.display = '';
+        frag.appendChild(el);
+      });
+      $gallery.appendChild(frag);
+
       buildPager(pages, total);
     }
 
     function buildPager(pages, total){
-      // botones prev/next
       $btnPrev.disabled = (current === 1);
       $btnNext.disabled = (current === pages);
-
-      // lista de páginas
       $pagerList.innerHTML = '';
       for (let p = 1; p <= pages; p++){
         const li = document.createElement('li');
@@ -343,33 +371,89 @@
         li.appendChild(btn);
         $pagerList.appendChild(li);
       }
-
-      // resumen
-      const first = total ? ( (current - 1)*perPage + 1 ) : 0;
+      const first = total ? ((current - 1)*perPage + 1) : 0;
       const last  = Math.min(current*perPage, total);
       $pagerSummary.textContent = total
         ? `Página ${current} de ${Math.ceil(total/perPage)} — Mostrando ${first}–${last} de ${total} obras`
         : `Sin resultados con los filtros seleccionados`;
     }
 
-    // eventos
+    // Modal + WhatsApp
+    $gallery.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('.artwork-more');
+      if (!btn) return;
+      ev.preventDefault();
+
+      const card = btn.closest('.artwork');
+      const imgEl = card.querySelector('.artwork-img');
+      const titleEl = card.querySelector('.artwork-title');
+      const metaEl = card.querySelector('.artwork-meta');
+      const priceEl = card.querySelector('.artwork-price');
+
+      const title = titleEl?.textContent?.trim() || 'Obra';
+      const meta  = metaEl?.textContent?.trim() || '';
+      const priceTxt = priceEl?.textContent?.trim() || '';
+      const size = (card.dataset.size || '').toUpperCase();
+      const support = (card.dataset.support || '').toLowerCase();
+      const category = (card.dataset.category || '').toLowerCase();
+      const status = (card.dataset.status || '').toLowerCase();
+
+      $mImg.src = imgEl?.src || '';
+      $mImg.alt = title;
+      $mTitle.textContent = title;
+      $mMeta.textContent = meta;
+
+      if (status === 'vendida') {
+        $mPriceRow.classList.add('d-none');
+      } else {
+        $mPriceRow.classList.remove('d-none');
+        $mPrice.textContent = priceTxt;
+      }
+
+      $mSize.textContent = size || '—';
+      $mSupport.textContent = support || '—';
+      $mCategory.textContent = category || '—';
+      $mStatus.textContent = (status === 'vendida') ? 'Vendida' : 'Disponible';
+
+      const cleanTitle = title.replace(/\s+/g, ' ').trim();
+      const cleanPrice = (card.dataset.price || '').toString();
+      const msg = `Hola, quiero comprar: "${cleanTitle}" - Precio: $${cleanPrice} - Tamaño: ${size} - Categoría: ${category}`;
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+      if (status === 'vendida') {
+        $mWhatsapp.classList.add('disabled');
+        $mWhatsapp.setAttribute('aria-disabled', 'true');
+        $mWhatsapp.removeAttribute('href');
+        $mWhatsapp.textContent = 'No disponible';
+      } else {
+        $mWhatsapp.classList.remove('disabled');
+        $mWhatsapp.removeAttribute('aria-disabled');
+        $mWhatsapp.href = waUrl;
+        $mWhatsapp.textContent = 'Comprar por WhatsApp';
+      }
+    });
+
+    // Eventos filtros
     $form.addEventListener('submit', (e) => { e.preventDefault(); applyFilters(); });
     $btnClear.addEventListener('click', () => {
-      $order.value = 'desc';
+      $order.value = 'date_desc';
       $priceMin.value = '';
       $priceMax.value = '';
-      $size.value = '';
+      [...$sizes, ...$supports, ...$categories].forEach(c => c.checked = false);
       $supports.forEach(c => c.checked = true);
+      $categories.forEach(c => c.checked = true);
       applyFilters();
     });
+
+    // IMPORTANTE: reordenar al cambiar el selector "Ordenar por"
+    $order.addEventListener('change', applyFilters);
+
     $btnPrev.addEventListener('click', () => { if (current > 1) { current--; render(); } });
     $btnNext.addEventListener('click', () => { current++; render(); });
 
     window.addEventListener('resize', () => {
       const newPer = getPerPage();
-      if (newPer !== perPage){
-        perPage = newPer; render();
-      }
+      if (newPer !== perPage){ perPage = newPer; render(); }
     });
 
     // init

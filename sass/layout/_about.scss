@@ -1,60 +1,78 @@
 @use '../base/variables' as v;
 
 
-/* ===== Sobre el artista ===== */
+/* =========================
+   10) “SOBRE EL ARTISTA” — nesting
+   ========================= */
 .about-page{
-  padding-block: clamp(2rem, 6vw, 3.5rem);
-}
+  padding-block: clamp(2rem, 6vw, 5rem);
 
-.about-container{
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-inline: clamp(16px, 6.6vw, 100px);
-}
-
-/* Título */
-.page-title{
-  margin: 0 0 clamp(1rem, 2.5vw, 1.25rem) 0;
-  font-weight: 300;
-  color: v.$color-text;         /* #08332B en tus variables */
-  letter-spacing: .01em;
-}
-
-/* Retrato centrado y medido */
-.about-portrait{
-  margin: 0 auto clamp(1rem, 3vw, 1.5rem);
-  width: clamp(160px, 28vw, 320px);
-
-  &__img{
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
+  .about-container{
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 6.6vw, 100px);
   }
-}
 
-/* Texto del manifiesto */
-.about-text{
-  max-width: 72ch;
-  margin-inline: auto;
-  color: v.$color-text;
-  opacity: .95;                 /* como en home */
-  line-height: 1.65;
-
-  p{
-    margin: 0 0 .9rem 0;
+  .about-title{
+    margin: 0 0 1.5rem;
+    padding-block: .5rem;
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+    line-height: 1.2;
+    color: v.$color-text;
   }
+
+  .about-portrait{
+    margin: 0 0 1.5rem;
+    width: 140px;
+
+    &__img{
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .about-text{
+    text-align: left;
+    line-height: 1.7;
+    max-width: none;
+
+    p{ margin: 0 0 1rem; }
+  }
+
+  .about-cta{ text-align: center; margin-top: 1.5rem; }
 }
 
-/* Botón centrado (usa .btn global) */
-.about-cta{
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(1rem, 4vw, 1.5rem);
-}
-
-/* --- Mobile tweaks (opcional, un pelín más aire) --- */
+/* Mobile */
 @media (max-width: 575.98px){
-  .about-page{ padding-block: clamp(1.5rem, 8vw, 2.25rem); }
+  .about-page{
+    padding-block: 2.5rem;
+    text-align: center;
+
+    .about-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-inline: 1rem;
+    }
+
+    .about-title{ font-size: 1.3rem; margin-bottom: 1.25rem; }
+    .about-portrait{ width: 170px; margin-bottom: 1.25rem; }
+    .about-text{ text-align: center; max-width: 90%; margin-inline: auto; }
+
+    .about-cta{
+      width: 100%;
+
+      .btn{
+        display: block;
+        width: 100%;
+        border-radius: 12px;
+        box-sizing: border-box;
+      }
+    }
+  }
 }

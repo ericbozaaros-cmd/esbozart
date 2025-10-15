@@ -1,0 +1,78 @@
+/* =========================================================
+   UTILITIES: Mixins reutilizables
+   Depende (opcional): base/_variables.scss (breakpoints y colores)
+   =======================================================*/
+@use '../base/variables' as v;
+
+/* --- 1) Breakpoints ----------------------------------- */
+/* Mapa local por si tu _variables.scss NO define v.$breakpoints */
+$bp-defaults: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+/* Obtiene el valor de un breakpoint desde v.$breakpoints o defaults */
+@function bp-get($key) {
+  @if (variable-exists(breakpoints, v)) {
+    @if (map-has-key(v.$breakpoints, $key)) {
+      @return map-get(v.$breakpoints, $key);
+    }
+  }
+  @return map-get($bp-defaults, $key);
+}
+
+/* Media queries semánticas */
+@mixin up($bp) { @media (min-width: bp-get($bp)) { @content; } }
+@mixin down($bp) { @media (max-width: calc(bp-get($bp) - 0.02px)) { @content; } }
+@mixin between($min, $max) {
+  @media (min-width: bp-get($min)) and (max-width: calc(bp-get($max) - 0.02px)) { @content; }
+}
+
+/* --- 2) Fluido con clamp ------------------------------- */
+/* Ej: @include fluid-font(1rem, 2.5rem); */
+@mixin fluid-font($min, $max) {
+  font-size: clamp($min, 2.2vw, $max);
+}
+
+/* Espaciado vertical fluido */
+@mixin fluid-space($min, $max) {
+  padding-block: clamp($min, 6vw, $max);
+}
+
+/* --- 3) Utilidades rápidas ----------------------------- */
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important;
+  overflow: hidden !important; clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important; border: 0 !important;
+}
+
+/* Texto una línea con elipsis */
+@mixin truncate($width: 100%) {
+  max-width: $width; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+/* Centro rápido */
+@mixin center {
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Botón base — útil para %placeholder o reset de variantes */
+@mixin btn-base($radius: 12px) {
+  display: inline-block;
+  border-radius: $radius;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* --- 4) Placeholder para @extend (opcional) ------------ */
+/* Luego: .btn { @extend %btn-shared; } */
+%btn-shared {
+  @include btn-base();
+  padding: .65rem 1rem;
+}
